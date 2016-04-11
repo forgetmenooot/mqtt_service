@@ -27,13 +27,6 @@ except:
 	print "Unable to connect to the DB"
 	sys.exit(1)
 
-class ConnectHandler(web.RequestHandler):
-	
-	@web.asynchronous
-	def get(self):
-		self.write("This is your response")
-		self.finish()
-
 class WebSocketHandler(websocket.WebSocketHandler):
 
 	def check_origin(self, origin):
@@ -155,7 +148,6 @@ class WebSocketHandler(websocket.WebSocketHandler):
 
 
 app = web.Application([
-	(r'/rest', ConnectHandler),
 	(r'/ws', WebSocketHandler),
 ])
 
